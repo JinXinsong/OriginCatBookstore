@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>影书</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" th:href="@{/css/framework7.bundle.css}">
+    <link rel="stylesheet" th:href="@{/css/framework7-icons.css}">
+    <!-- <link rel="stylesheet" th:href="@{/css/index.css}"> -->
+    <!-- Path to your custom app styles-->
+    <!-- <link rel="stylesheet" href="path/to/my-app.css"> -->
+</head>
+
+<body>
+    <div class="list no-hairlines-md">
+        <form id='form_data' class="form-store-data">
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">店名</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="storeName" placeholder="店名" class="localStorage">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">简介</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="storeInf" placeholder="简介" class="localStorage">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">号码</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="storePhone" placeholder="号码">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">位置</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="storeLoc" placeholder="位置">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </form>
+        <div class="block">
+            <div class="row">
+                <button class="col button button-fill" id="submit">确认</button>
+                <!-- <!-- <button class="col button button-fill">Button</button> -->
+                <button class="col button button-fill color-red" onclick="location.href='/storeadmin/home'">取消</button>
+                <!-- <button class="col button button-fill color-red" id="goback">返回</button> -->
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/framework7.bundle.js}"></script>
+    <script type="text/javascript">
+        var App = new Framework7();
+
+        var $$ = Dom7;
+
+        $$('#submit').on('click', function () {
+            var book = JSON.stringify(App.form.convertToData('#form_data'));
+            var bookStr = "bookStr=" + book;
+            var url = '/storeadmin/editstore';
+            App.request.post(url, bookStr, function (data) {
+                if (JSON.parse(data).success == true) {
+                    App.dialog.alert("修改成功");
+                    window.location.href = "/storeadmin/home";
+                } else {
+                    App.dialog.alert(JSON.parse(data).msg);
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>

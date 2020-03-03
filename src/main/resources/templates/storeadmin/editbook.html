@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>影书</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" th:href="@{/css/framework7.bundle.css}">
+    <link rel="stylesheet" th:href="@{/css/framework7-icons.css}">
+    <!-- <link rel="stylesheet" th:href="@{/css/index.css}"> -->
+    <!-- Path to your custom app styles-->
+    <!-- <link rel="stylesheet" href="path/to/my-app.css"> -->
+</head>
+
+<body>
+    <div class="list no-hairlines-md">
+        <form id='form_data' class="form-store-data">
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">书名</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="bookName" placeholder="书名" class="localStorage">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">简介</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="bookInf" placeholder="简介" class="localStorage">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">价格</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="bookPrice" placeholder="价格">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">库存</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="bookNum" placeholder="库存">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">状态</div>
+                        <div class="item-input-wrap">
+                            <select placeholder="Please choose..." name="bookStatu">
+                                <option value=1>上架</option>
+                                <option value=2>下架</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </form>
+        <div class="block">
+            <div class="row">
+                <button class="col button button-fill" id="submit">确认</button>
+                <!-- <!-- <button class="col button button-fill">Button</button> -->
+                <button class="col button button-fill color-red" onclick="location.href='/storeadmin/home'">取消</button>
+                <!-- <button class="col button button-fill color-red" id="goback">返回</button> -->
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/framework7.bundle.js}"></script>
+    <script type="text/javascript">
+        var App = new Framework7();
+
+        var $$ = Dom7;
+
+        var bookID = [[${ bookID }]];
+
+        $$('#submit').on('click', function () {
+            var book = JSON.stringify(App.form.convertToData('#form_data'));
+            var bookjson = JSON.parse(book);
+            bookjson.bookID = bookID;
+            book = JSON.stringify(bookjson);
+            var bookStr = "bookStr=" + book;
+            var url = '/storeadmin/editbook';
+            App.request.post(url, bookStr, function (data) {
+                if (JSON.parse(data).success == true) {
+                    App.dialog.alert("修改成功");
+                    window.location.href = "/storeadmin/home";
+                } else {
+                    App.dialog.alert(JSON.parse(data).msg);
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>

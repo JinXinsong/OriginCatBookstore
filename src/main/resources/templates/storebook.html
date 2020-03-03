@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>影书</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" th:href="@{/css/framework7.bundle.css}">
+    <link rel="stylesheet" th:href="@{/css/framework7-icons.css}">
+    <!-- <link rel="stylesheet" th:href="@{/css/index.css}"> -->
+    <!-- Path to your custom app styles-->
+    <!-- <link rel="stylesheet" href="path/to/my-app.css"> -->
+
+</head>
+
+<body>
+    <div class="page-content">
+        <div class="list media-list">
+            <ul th:each="c:${page}">
+                <li>
+                    <a href="#" class="item-link item-content">
+                        <div class="item-media"><img src="https://cdn.framework7.io/placeholder/people-160x160-2.jpg"
+                                width="80" /></div>
+                        <div class="item-inner">
+                            <div class="item-title-row">
+                                <div class="item-title" th:text=${c.bookName}>Don't Stop Me Now</div>
+                                <div class="item-after" th:text=${c.bookPrice}>$22</div>
+                            </div>
+                            <!-- <div class="item-subtitle">Queen</div> -->
+                            <div class="item-text" th:text=${c.bookInf}>Lorem ipsum dolor sit amet, consectetur
+                                adipiscing
+                                elit. Nulla sagittis
+                                tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices
+                                condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris
+                                rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="fab fab-extended fab-center-bottom color-red">
+        <a href="/home" class="external">
+            <!-- <i class="icon f7-icons if-not-md">plus</i>
+            <i class="icon material-icons md-only">add</i> -->
+            <div class="fab-text">返回</div>
+        </a>
+    </div>
+    <script type="text/javascript" th:src="@{/js/framework7.bundle.js}"></script>
+    <script type="text/javascript" th:src="@{/js/storeadmin/home.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>影书注册</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" th:href="@{/css/framework7.bundle.css}">
+    <link rel="stylesheet" th:href="@{/css/framework7-icons.css}">
+    <!-- Path to your custom app styles-->
+    <!-- <link rel="stylesheet" href="path/to/my-app.css"> -->
+
+</head>
+
+<body>
+    <div class="list no-hairlines-md">
+        <form id='form_data' class="form-store-data">
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-media">
+                        <i class="framework7-icons">envelope_circle</i>
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">邮箱</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="userMail" placeholder="邮箱" class="localStorage">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-media">
+                        <i class="framework7-icons">person_crop_circle</i>
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">用户名</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="userName" placeholder="用户名" class="localStorage">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-media">
+                        <i class="framework7-icons"> phone_circle</i>
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">电话</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="userPhone" id="user_phone" placeholder="电话">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-media">
+                        <i class="framework7-icons">lock_circle</i>
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">密码</div>
+                        <div class="item-input-wrap">
+                            <input type="password" name="userPasswd" placeholder="密码">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-media">
+                        <i class="framework7-icons">lock_rotation</i>
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">确认密码</div>
+                        <div class="item-input-wrap">
+                            <input type="password" name="userPasswdRe" placeholder="确认密码">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="item-content item-input item-input-outline">
+                    <div class="item-media">
+                        <i class="framework7-icons">lpencil_circle</i>
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title item-floating-label">用户类型</div>
+                        <div class="item-input-wrap">
+                            <select placeholder="Please choose..." name="userKind">
+                                <option value=1>个人用户</option>
+                                <option value=2>书商用户</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </form>
+        <div class="block">
+            <div class="row">
+                <button class="col button button-fill" id="submit">注册</button>
+                <!-- <!-- <button class="col button button-fill">Button</button> -->
+                <button class="col button button-fill color-red" onclick="location.href='/'">返回</button>
+                <!-- <button class="col button button-fill color-red" id="goback">返回</button> -->
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/framework7.bundle.js}"></script>
+    <script type="text/javascript" th:src="@{/js/signup.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>影书</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" th:href="@{/css/framework7.bundle.css}">
+    <link rel="stylesheet" th:href="@{/css/framework7-icons.css}">
+    <!-- <link rel="stylesheet" th:href="@{/css/index.css}"> -->
+    <!-- Path to your custom app styles-->
+    <!-- <link rel="stylesheet" href="path/to/my-app.css"> -->
+    <style type="text/css">
+        .demo-card-header-pic .card-header {
+            height: 40vw;
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        .demo-card-header-pic .card-content-padding .date {
+            color: #8e8e93;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="page">
+        <!-- Additional "tabbar-labels" class -->
+        <div class="toolbar tabbar tabbar-labels toolbar-bottom">
+            <div class="toolbar-inner">
+                <a href="#tab-1" class="tab-link tab-link-active">
+                    <!-- Different icons for iOS and MD themes -->
+                    <i class="icon f7-icons if-not-md">book_fill</i>
+                    <i class="icon material-icons md-only">book</i>
+                    <!-- Label text -->
+                    <span class="tabbar-label">图书</span>
+                </a>
+                <a href="#tab-2" class="tab-link">
+                    <i class="icon f7-icons if-not-md">today_fill</i>
+                    <i class="icon material-icons md-only">today</i>
+                    <span class="tabbar-label">书评</span>
+                </a>
+                <a href="#tab-3" class="tab-link">
+                    <i class="icon f7-icons if-not-md">person_crop_circle_fill</i>
+                    <i class="icon material-icons md-only">person_crop_circle</i>
+                    <span class="tabbar-label">我的</span>
+                </a>
+            </div>
+        </div>
+        <div class="tabs">
+            <!-- First tab, active -->
+            <div class="page-content tab tab-active" id="tab-1">
+                <div class="block">
+                    <p><b>图书</b></p>
+                    <div class="list media-list inset">
+                        <ul th:each="c:${page}">
+                            <li>
+                                <a th:href="@{/storebook(storeOwner=${c.storeOwner})}" class="item-link item-content external">
+                                    <div class="item-media"><img
+                                            src="https://cdn.framework7.io/placeholder/fashion-88x88-4.jpg"
+                                            width="44" /></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title" th:text="${c.storeName}">Yellow Submarine</div>
+                                        </div>
+                                        <div class="item-subtitle" th:text="${c.storeInf}">Beatles</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Second tab -->
+            <div class="page-content tab" id="tab-2">
+                <div class="block">
+                    <div class="card demo-card-header-pic">
+                        <div style="background-image:url(https://cdn.framework7.io/placeholder/nature-1000x600-3.jpg)"
+                            class="card-header align-items-flex-end">Journey To Mountains</div>
+                        <div class="card-content card-content-padding">
+                            <p class="date">Posted on January 21, 2015</p>
+                            <p>Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies efficitur vitae non
+                                felis. Phasellus quis nibh hendrerit...</p>
+                        </div>
+                        <div class="card-footer"><a href="#" class="link">Like</a><a href="#" class="link">Read more</a>
+                        </div>
+                    </div>
+
+                    <div class="card demo-card-header-pic">
+                        <div style="background-image:url(https://cdn.framework7.io/placeholder/people-1000x600-6.jpg)"
+                            class="card-header align-items-flex-end">Lorem Ipsum</div>
+                        <div class="card-content card-content-padding">
+                            <p class="date">Posted on January 21, 2015</p>
+                            <p>Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies efficitur vitae non
+                                felis. Phasellus quis nibh hendrerit...</p>
+                        </div>
+                        <div class="card-footer"><a href="#" class="link">Like</a><a href="#" class="link">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Third tab -->
+            <div class="page-content tab" id="tab-3">
+                <div class="list links-list">
+                    <ul>
+                        <li><a href="#">购物车</a></li>
+                        <li><a href="#">修改资料</a></li>
+                        <li><a href="#">通知</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/framework7.bundle.js}"></script>
+    <script type="text/javascript" th:src="@{/js/storeadmin/home.js}"></script>
+</body>
+
+</html>

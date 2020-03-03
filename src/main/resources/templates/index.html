@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>影书</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" th:href="@{/css/framework7.bundle.css}">
+    <link rel="stylesheet" th:href="@{/css/framework7-icons.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <!-- Path to your custom app styles-->
+    <!-- <link rel="stylesheet" href="path/to/my-app.css"> -->
+</head>
+
+<body>
+    <!-- <div class="card demo-facebook-card">
+        <div class="card-content"> <img th:src="@{/img/index.jpg}" width="100%" /></div>
+    </div> -->
+    <div class="index">
+        <img class="index" th:src="@{/img/index.jpg}" />
+    </div>
+    <div class="page-content">
+        <div></div>
+        <div class="block">
+            <p>
+                <!-- Open in login screen-modal that is already in DOM-->
+                <a href="#" class="col button button-raised button-round login-screen-open"
+                    data-login-screen=".login-screen">登陆</a>
+            </p>
+            <p>
+                <!-- Load page with login screen-->
+                <a href="/signup" class="col button button-raised button-round external">注册</a>
+            </p>
+        </div>
+    </div>
+    ...
+    <div class="login-screen">
+        <div class="view">
+            <div class="page">
+                <div class="page-content login-screen-content">
+                    <div class="login-screen-title">登陆</div>
+                    <form id="form_data">
+                        <div class="list">
+                            <ul>
+                                <li class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label">邮箱</div>
+                                        <div class="item-input-wrap">
+                                            <input type="text" name="userMail" placeholder="Your username">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label">密码</div>
+                                        <div class="item-input-wrap">
+                                            <input type="password" name="userPasswd" placeholder="Your password">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <ul>
+                                <li><a class="item-link list-button" href="#" id="submit">登陆</a></li>
+                            </ul>
+                            <div class="block-footer">
+                                <p>欢迎回来,我们始终等你</p>
+                                <p><a class="link login-screen-close" href="#">返回首页</a></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/framework7.bundle.js}"></script>
+    <script type="text/javascript" th:src="@{/js/index.js}"></script>
+</body>
+
+</html>
